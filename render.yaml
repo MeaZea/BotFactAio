@@ -5,9 +5,7 @@ services:
     plan: free
     runtime: python3
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "python BotFactAio.py"
+    startCommand: "bash start.sh"
     envVars:
-      - key: BOT_TOKEN
-        value: ${BOT_TOKEN}
-      - key: PORT
-        value: 10000  # Установите значение порта по умолчанию
+      - key: TOKEN
+        value: ${TOKEN}
