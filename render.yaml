@@ -7,5 +7,7 @@ services:
     buildCommand: "pip install -r requirements.txt"
     startCommand: "python BotFactAio.py"
     envVars:
-      - key: TOKEN
-        value: ${TOKEN}
+      - key: BOT_TOKEN
+        value: ${BOT_TOKEN}
+      - key: PORT
+        value: 10000  # Установите значение порта по умолчанию
