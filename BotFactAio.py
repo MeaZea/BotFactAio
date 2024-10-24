@@ -4,7 +4,8 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, Message
 from aiogram.utils.executor import start_polling
 import randfacts
 from googletrans import Translator
-from config import BOT_TOKEN  # Import the token from config.py
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")  # Read the token from the environment variable
 
 bot = Bot(BOT_TOKEN)
 dp = Dispatcher(bot)
@@ -35,4 +36,5 @@ async def handle_message(message: Message):
     await message.answer('Сообщение принято')
 
 if __name__ == '__main__':
-    start_polling(dp)
+    port = int(os.getenv("PORT", 5000))
+    start_polling(dp, skip_updates=True)
