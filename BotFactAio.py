@@ -1,5 +1,5 @@
-from flask import Flask, request
 import os
+from flask import Flask, request
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, Message
 from aiogram.utils.executor import start_polling
@@ -41,5 +41,6 @@ def index():
     return "Bot is running"
 
 if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 10000))
     start_polling(dp)
-    app.run(host='0.0.0.0', port=10000)
+    app.run(host='0.0.0.0', port=port)
