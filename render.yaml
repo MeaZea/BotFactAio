@@ -1,5 +1,5 @@
 services:
-  - type: web
+  - type: worker
     name: youraya_telebot
     env: python
     plan: free
