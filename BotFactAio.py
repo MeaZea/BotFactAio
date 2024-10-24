@@ -1,14 +1,10 @@
 import os
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, Message
-from aiogram.utils.executor import start_webhook
+from aiogram.utils.executor import start_polling
 import randfacts
 from googletrans import Translator
-
-BOT_TOKEN = os.getenv("BOT_TOKEN")  # Чтение токена из переменной окружения
-WEBHOOK_HOST = 'https://youraya_telebot.onrender.com'  # Замените на ваш домен на Render
-WEBHOOK_PATH = '/webhook/' + BOT_TOKEN
-WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
+from config import BOT_TOKEN  # Import the token from config.py
 
 bot = Bot(BOT_TOKEN)
 dp = Dispatcher(bot)
@@ -38,19 +34,5 @@ async def handle_message(message: Message):
     save_message(message.from_user.id, message.text, 'general_messages.txt')
     await message.answer('Сообщение принято')
 
-async def on_startup(dp):
-    await bot.set_webhook(WEBHOOK_URL)
-
-async def on_shutdown(dp):
-    await bot.delete_webhook()
-
 if __name__ == '__main__':
-    port = int(os.getenv("PORT", 5000))
-    start_webhook(
-        dispatcher=dp,
-        webhook_path=WEBHOOK_PATH,
-        on_startup=on_startup,
-        on_shutdown=on_shutdown,
-        host='0.0.0.0',
-        port=port,
-    )
+    start_polling(dp)
