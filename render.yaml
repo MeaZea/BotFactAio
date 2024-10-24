@@ -9,4 +9,3 @@ services:
     envVars:
       - key: TOKEN
         value: ${TOKEN}
-    port: 10000

@@ -33,4 +33,3 @@ googletrans~=4.0.0rc1
 magic-filter~=1.0.12
 charset-normalizer~=3.4.0
 python-dotenv~=1.0.1
-Flask
