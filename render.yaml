@@ -1,5 +1,5 @@
 services:
-  - type: worker
+  - type: web
     name: youraya_telebot
     env: python
     plan: free
@@ -9,3 +9,4 @@ services:
     envVars:
       - key: TOKEN
         value: ${TOKEN}
+    port: 10000
